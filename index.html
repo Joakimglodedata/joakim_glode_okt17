@@ -37,9 +37,17 @@
         2. Hent button-element til JS og sett opp hendelse lytter
           a. Bruke metoden addEvenetListener med anonym funksjon
         3. Hent resterende HTML-elementet synlig til nettsiden
-          Husk å bruke .value for å hente verdi elementet og ikkje selve elemntet
-        4. Returner verdien i input-elementet synlig til nettsiden
-          a. Sjekk resultat i console før det returneres til siden -->
+          a. Husk å bruke .value for å hente verdi elementet og ikkje selve elemntet
+        4. Lage eit nytt HTML-element i JS som tar i mot input verdi 
+          a. Bruke .createElement-metoden for å lage li-element
+          b. Bruk .texcontent-metoden for å legge til input som innhold i li
+          c. Bruk .classList.add for å legge tiø ein klasse som har styling fra CSS 
+        5. Returnere nytt li-element til ul-elemtet i HTML
+          a. Bruke .appendChild-metoden for å legge li i ul 
+        6. Lag eit button-element i JS og sett opp ein hendelse lytter
+          a. Bruk .remove() på li-elmentet den hører til
+        7. Returner button-elementet til i li-elemntet
+          a. Bruk .appendcChild-metoden for å legge button i li-->
           <form action="">
             <label for="todoInput">
               Skriv eit gjøremål
@@ -47,11 +55,11 @@
             </label>
             <button id="addTodo">Legg til</button>
           </form>
-          <p id="todoDisplay"><!-- Får data fra JS --></p>
+          <ul id="todoDisplay"><!-- Får data fra JS --></ul>
       </section>
     </main>
     <footer>
-      <h4>Laget av Julie</h4>
+      <h4>Laget av Julie, endret av Joakim</h4>
     </footer>
   </body>
 </html>
