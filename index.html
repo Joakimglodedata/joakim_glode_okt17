@@ -30,7 +30,24 @@
     </header>
     <main>
       <section id="home" class="sectionHero">
-        <!-- Hero-section -->
+        <!-- Gjøremålsliste:
+        1. Lage elementene vi trenger i HTML: input og butoon og tekst-element
+          a. Tenk semnatisk Form-elemnter
+          b. Alle element må ha eget ID-navn
+        2. Hent button-element til JS og sett opp hendelse lytter
+          a. Bruke metoden addEvenetListener med anonym funksjon
+        3. Hent resterende HTML-elementet synlig til nettsiden
+          Husk å bruke .value for å hente verdi elementet og ikkje selve elemntet
+        4. Returner verdien i input-elementet synlig til nettsiden
+          a. Sjekk resultat i console før det returneres til siden -->
+          <form action="">
+            <label for="todoInput">
+              Skriv eit gjøremål
+              <input type="text" name="todoInput" id="todoInput">
+            </label>
+            <button id="addTodo">Legg til</button>
+          </form>
+          <p id="todoDisplay"><!-- Får data fra JS --></p>
       </section>
     </main>
     <footer>
