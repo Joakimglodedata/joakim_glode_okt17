@@ -28,16 +28,6 @@ main {
   min-height: 100vh;
 }
 
-.sortable-item {
-  display: none;
-  background-color: blueviolet;
-  color: yellow;
-}
-
-.over {
-  opacity: 0.4;
-}
-
 .done {
   text-decoration: line-through;
 }
