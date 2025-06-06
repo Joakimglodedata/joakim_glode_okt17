@@ -59,6 +59,7 @@ main {
   border-radius: 50px;
 }
 
+
 #todoDisplay > * {
   border-bottom: 2px outset black;
   padding: 7px 0px;

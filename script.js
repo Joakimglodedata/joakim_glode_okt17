@@ -1,16 +1,3 @@
-/* 
-kommentar 
-for 
-fleire
-linjer
-*/
-
-// Kommentar for ein linje
-
-
-// console.log("Hello")
-
-
 // Lager ein variabel som lagrer at den henter eit element fra HTML med id-navn addTodo
 const addTodo = document.getElementById("addTodo") // Lager ein variabel som lagrer at den henter eit element fra HTML med #addTodo
 console.log(addTodo)
@@ -25,15 +12,15 @@ addTodo.addEventListener("click", () => {
   makeItem ()
 })
 
-// Knapp som bruker arrays for å endrer teksten i todoInput og kjører makeItem, kva element den tar fra array'ene er tileldig og vi kan enkelt putte inn fleire verdier den kan bruke. 
+// Knapp som bruker arrays for å endre teksten i todoInput og kjører makeItem, kva element den tar fra array'ene er tileldig og vi kan enkelt putte inn fleire verdier den kan bruke. 
 // Ingen logikk i kva som blir plukket ut, men dette er meir ein gøy funksjon en noe faktisk hjelpsomt, kunne brukt (if) eller lignende for å gjøre utvalget av suffixer avhengig av kva prefix som først er valgt
 addRandom.addEventListener("click", () => {
   event.preventDefault()
   const todoInput = document.getElementById("todoInput")
   const prefix = ["Vaske", "Støvsuge", "Rydde", "Børste", "Lage", "Fikse", "Hente", "Lufte", "Stryke"]
-  const suffix = ["stuen", "kjørl", "mat", "kjeledyr", "inngangsdøren", "loftet", "plantene"]
-
-  todoInput.value = prefix[Math.floor(Math.random() * (prefix.length - 1))] + " " + suffix[Math.floor(Math.random() * (suffix.length - 1))]
+  const suffix = ["stue", "kjørl", "mat", "kjeledyr", "inngangsdør", "loft", "planter", "bil", "klær"]
+  // Math random generer nummer fra og med 0 og opp til men ikkje inkludert 1, ganger det med lengden på den relevante array'en for å øke rekkeviden også Math.floor runder det ned til eit helt tall
+  todoInput.value = prefix[Math.floor(Math.random() * (prefix.length))] + " " + suffix[Math.floor(Math.random() * (suffix.length))]
   //console.log(prefix.length)
   makeItem ()
 })
@@ -56,13 +43,13 @@ function makeItem () {
 
   const deleteTodo = document.createElement("button")
   deleteTodo.textContent = "X"
-  // Når knappen blir klikket tar den vekk todoItem elementet den blei produsert med, og redefinerer todoItemValueList uten todoInputValue som blei brukt for å lage det todoItem elementet 
+  // Når knappen blir klikket tar den vekk forelder todoItem elementet, og redefinerer todoItemValueList uten todoInputValue som blei brukt for å lage det todoItem elementet 
   deleteTodo.addEventListener("click", function () {
       todoItem.remove()
     todoItemValueList = todoItemValueList.filter(element => element != todoInputValue)
   })
 
-  // Lager ein knapp som kan toggle ein klasse som stryker ut teksten på TodoItem
+  // Lager ein knapp som kan toggle ein klasse som stryker ut teksten på forelder TodoItem
   const doneTodo = document.createElement("button")
   doneTodo.textContent = "gjort"
   doneTodo.addEventListener("click", function () {
