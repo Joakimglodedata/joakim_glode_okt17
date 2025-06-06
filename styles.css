@@ -39,7 +39,7 @@ header {
 
 /* MAIN */
 main {
-  min-height: 100vh;
+  min-height: 80vh;
 }
 
 .done {
@@ -53,13 +53,20 @@ main {
 
 #todoDisplay {
   background-color: rgb(224, 224, 153);
-  padding: 0px;
+  padding: 30px;
   list-style: lower-alpha inside;
+  min-width: 30vw;
+  border-radius: 50px;
 }
 
 #todoDisplay > * {
   border-bottom: 2px outset black;
   padding: 7px 0px;
+}
+
+#todoDisplay > * > button {
+  float: right;
+  margin: 0px 5px
 }
 
 

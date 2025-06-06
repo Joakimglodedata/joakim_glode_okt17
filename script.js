@@ -30,8 +30,8 @@ addTodo.addEventListener("click", () => {
 addRandom.addEventListener("click", () => {
   event.preventDefault()
   const todoInput = document.getElementById("todoInput")
-  const prefix = ["Vaske", "Støvsuge", "Rydde", "Børste", "Lage", "Fikse", "Hente"]
-  const suffix = ["stuen", "kjørl", "mat", "kjeledyr", "inngangsdøren", "loftet"]
+  const prefix = ["Vaske", "Støvsuge", "Rydde", "Børste", "Lage", "Fikse", "Hente", "Lufte", "Stryke"]
+  const suffix = ["stuen", "kjørl", "mat", "kjeledyr", "inngangsdøren", "loftet", "plantene"]
 
   todoInput.value = prefix[Math.floor(Math.random() * (prefix.length - 1))] + " " + suffix[Math.floor(Math.random() * (suffix.length - 1))]
   //console.log(prefix.length)
@@ -43,11 +43,11 @@ function makeItem () {
   const todoInput = document.getElementById("todoInput")
   // Gjør ein sjekk så man ikkje kan lage tomme elementer, .length > 0 gjør at det må være noe skrivd inn i input og .trim() tar vekk mellomrom så man ikkje kan lage element med kun mellomrom.
   if (todoInput.value.trim().length > 0 && todoItemValueList.includes(todoInput.value) != true) {  
-  console.log("click")
   console.log(todoInput)
   const todoInputValue = todoInput.value
   console.log(todoInputValue)
 
+  // Skaper eit liste element som blir tilgjit teksten som er i todoInputValue når man funksjonen blir aktivert
   const todoItem = document.createElement("li")
   console.log(todoItem)
   todoItem.textContent = todoInputValue
@@ -72,10 +72,11 @@ function makeItem () {
   const todoDisplay = document.getElementById("todoDisplay")
   console.log(todoDisplay)
 
-  todoItem.appendChild(doneTodo)
+  // Legger til dei genererte elementene under ein forelder 
   todoItem.appendChild(deleteTodo)
+  todoItem.appendChild(doneTodo)
   todoDisplay.appendChild(todoItem) 
   }
 }
-makeItem ()
+
 
