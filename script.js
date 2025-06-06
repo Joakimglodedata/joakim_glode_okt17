@@ -12,17 +12,23 @@ addTodo.addEventListener("click", () => {
   makeItem ()
 })
 
+
 // Knapp som bruker arrays for å endre teksten i todoInput og kjører makeItem, kva element den tar fra array'ene er tileldig og vi kan enkelt putte inn fleire verdier den kan bruke. 
 // Ingen logikk i kva som blir plukket ut, men dette er meir ein gøy funksjon en noe faktisk hjelpsomt, kunne brukt (if) eller lignende for å gjøre utvalget av suffixer avhengig av kva prefix som først er valgt
 addRandom.addEventListener("click", () => {
   event.preventDefault()
   const todoInput = document.getElementById("todoInput")
-  const prefix = ["Vaske", "Støvsuge", "Rydde", "Børste", "Lage", "Fikse", "Hente", "Lufte", "Stryke"]
-  const suffix = ["stue", "kjørl", "mat", "kjeledyr", "inngangsdør", "loft", "planter", "bil", "klær"]
+  const prefix = ["Vaske", "Støvsuge", "Rydde", "Børste", "Lage", "Fikse", "Hente", "Lufte", "Stryke", "Male"]
+  const suffix = ["stue", "kjørl", "mat", "kjeledyr", "inngangsdør", "loft", "planter", "bil", "klær", "vegg"]
   // Math random generer nummer fra og med 0 og opp til men ikkje inkludert 1, ganger det med lengden på den relevante array'en for å øke rekkeviden også Math.floor runder det ned til eit helt tall
   todoInput.value = prefix[Math.floor(Math.random() * (prefix.length))] + " " + suffix[Math.floor(Math.random() * (suffix.length))]
   //console.log(prefix.length)
-  makeItem ()
+
+  // Før vi generer eit liste element sjekker vi om den genererte teksten allerede er lista, sjekken blir gjort i makeItem() også men der gjir det ein feilmelding og det virker tullete å gji for element nettsiden har generert
+  // Kunne sette den til å generere ein ny tekst når sjekken feiler, men ser for meg det kan være problematisk om alle mulige tekster den kan generere allerede er laget.
+  if (todoItemValueList.includes(todoInput.value) != true) {
+    makeItem ()
+  }
 })
 
 // Med å lage makeItem som ein separat funsksjon kan man enkelt legge til fleire måter å aktivere den, gjør spesielt testing mye simplere siden eg kan kjøre funksjonen når eg åpner siden med å legge in makeItem ().
@@ -30,7 +36,6 @@ function makeItem () {
   const todoInput = document.getElementById("todoInput")
   // Gjør ein sjekk så man ikkje kan lage tomme elementer, .length > 0 gjør at det må være noe skrivd inn i input og .trim() tar vekk mellomrom så man ikkje kan lage element med kun mellomrom.
   if (todoInput.value.trim().length > 0 && todoItemValueList.includes(todoInput.value) != true) {  
-  console.log(todoInput)
   const todoInputValue = todoInput.value
   console.log(todoInputValue)
 
@@ -63,6 +68,13 @@ function makeItem () {
   todoItem.appendChild(deleteTodo)
   todoItem.appendChild(doneTodo)
   todoDisplay.appendChild(todoItem) 
+  } 
+  // Gjir ein feilmelding for å informere at det ikkje er tillat å lage fleire element med samme tekst
+  // Tenker det er unnødvendig å gji feilmelding når feltet er tomt siden det er noe man hovedsakelig gjør med uhell
+  else if (todoItemValueList.includes(todoInput.value) === true) {
+    // console.log(randomOutput)
+    // console.log(todoInput.value)
+    window.alert("Allerede eit gjøremål")
   }
 }
 
