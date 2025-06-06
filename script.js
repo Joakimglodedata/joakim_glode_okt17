@@ -18,8 +18,8 @@ addTodo.addEventListener("click", () => {
 addRandom.addEventListener("click", () => {
   event.preventDefault()
   const todoInput = document.getElementById("todoInput")
-  const prefix = ["Vaske", "Støvsuge", "Rydde", "Børste", "Lage", "Fikse", "Hente", "Lufte", "Stryke", "Male"]
-  const suffix = ["stue", "kjørl", "mat", "kjeledyr", "inngangsdør", "loft", "planter", "bil", "klær", "vegg"]
+  const prefix = ["Vaske", "Støvsuge", "Rydde", "Børste", "Lage", "Fikse", "Hente", "Lufte", "Stryke", "Male", "Kjøpe"]
+  const suffix = ["stue", "kjørl", "mat", "kjeledyr", "inngangsdør", "loft", "planter", "bil", "klær", "vegg", "søppel", "post"]
   // Math random generer nummer fra og med 0 og opp til men ikkje inkludert 1, ganger det med lengden på den relevante array'en for å øke rekkeviden også Math.floor runder det ned til eit helt tall
   todoInput.value = prefix[Math.floor(Math.random() * (prefix.length))] + " " + suffix[Math.floor(Math.random() * (suffix.length))]
   //console.log(prefix.length)
