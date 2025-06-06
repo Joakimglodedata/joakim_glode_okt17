@@ -1,5 +1,5 @@
 // Lager ein variabel som lagrer at den henter eit element fra HTML med id-navn addTodo
-const addTodo = document.getElementById("addTodo") // Lager ein variabel som lagrer at den henter eit element fra HTML med #addTodo
+const addTodo = document.getElementById("addTodo") 
 console.log(addTodo)
 
 // Setter opp ein array som fylles med teksten på gjøremål, bruker dette for å hindre at man kan produsere duplikat opplistinger.
@@ -49,10 +49,14 @@ function makeItem () {
   const deleteTodo = document.createElement("button")
   deleteTodo.textContent = "X"
   // Når knappen blir klikket tar den vekk forelder todoItem elementet, og redefinerer todoItemValueList uten todoInputValue som blei brukt for å lage det todoItem elementet 
-  deleteTodo.addEventListener("click", function () {
-      todoItem.remove()
+  // Bruker .classList.contains for å sjekke om todoItems har classen done som blir påført av doneTodo knappen, sletter om den har klassen, feilmelding om ikkje
+  // window.alert er ganske irriterende, men er raskere å implementere en å lage eit tekst element eller lignende i nettsiden som kan vise feilmeldinger
+  deleteTodo.addEventListener("click", function () {if (todoItem.classList.contains('done')) {
+    todoItem.remove()
     todoItemValueList = todoItemValueList.filter(element => element != todoInputValue)
-  })
+  } else {
+    window.alert('Klikk "gjort" først')
+  }})
 
   // Lager ein knapp som kan toggle ein klasse som stryker ut teksten på forelder TodoItem
   const doneTodo = document.createElement("button")
@@ -72,8 +76,6 @@ function makeItem () {
   // Gjir ein feilmelding for å informere at det ikkje er tillat å lage fleire element med samme tekst
   // Tenker det er unnødvendig å gji feilmelding når feltet er tomt siden det er noe man hovedsakelig gjør med uhell
   else if (todoItemValueList.includes(todoInput.value) === true) {
-    // console.log(randomOutput)
-    // console.log(todoInput.value)
     window.alert("Allerede eit gjøremål")
   }
 }
