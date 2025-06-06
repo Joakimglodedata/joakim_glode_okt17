@@ -25,12 +25,17 @@ addTodo.addEventListener("click", () => {
   makeItem ()
 })
 
+// Knapp som bruker arrays for å endrer teksten i todoInput og kjører makeItem, kva element den tar fra array'ene er tileldig og vi kan enkelt putte inn fleire verdier den kan bruke. 
+// Ingen logikk i kva som blir plukket ut, men dette er meir ein gøy funksjon en noe faktisk hjelpsomt, kunne brukt (if) eller lignende for å gjøre utvalget av suffixer avhengig av kva prefix som først er valgt
 addRandom.addEventListener("click", () => {
   event.preventDefault()
   const todoInput = document.getElementById("todoInput")
   const prefix = ["Vaske", "Støvsuge", "Rydde", "Børste", "Lage", "Fikse", "Hente"]
   const suffix = ["stuen", "kjørl", "mat", "kjeledyr", "inngangsdøren", "loftet"]
-  todoInput.value = 
+
+  todoInput.value = prefix[Math.floor(Math.random() * (prefix.length - 1))] + " " + suffix[Math.floor(Math.random() * (suffix.length - 1))]
+  //console.log(prefix.length)
+  makeItem ()
 })
 
 // Med å lage makeItem som ein separat funsksjon kan man enkelt legge til fleire måter å aktivere den, gjør spesielt testing mye simplere siden eg kan kjøre funksjonen når eg åpner siden med å legge in makeItem ().
