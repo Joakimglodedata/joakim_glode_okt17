@@ -41,7 +41,7 @@ function makeItem () {
 
   // Skaper eit liste element som blir tilgjit teksten som er i todoInputValue når man funksjonen blir aktivert
   const todoItem = document.createElement("li")
-  console.log(todoItem)
+  // console.log(todoItem)
   todoItem.textContent = todoInputValue
   todoItemValueList.push(todoInputValue)
   console.log(todoItemValueList)
@@ -66,7 +66,7 @@ function makeItem () {
   })
 
   const todoDisplay = document.getElementById("todoDisplay")
-  console.log(todoDisplay)
+  // console.log(todoDisplay)
 
   // Legger til dei genererte elementene under ein forelder 
   todoItem.appendChild(deleteTodo)
