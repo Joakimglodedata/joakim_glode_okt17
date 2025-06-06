@@ -1,3 +1,17 @@
+:root {
+  background-color: rgb(150, 150, 150);
+  --sec-clr: hsl(172, 63%, 55%);
+}
+
+button {
+  transition: 1.5s;
+  background: var(--sec-clr);
+}
+
+button:hover {
+  transform: scale(1.05);
+  background: hsl(from var(--sec-clr) calc(h + 10) s calc(l + 10));
+}
 /* HEADER */
 header {
   display: flex;
@@ -36,6 +50,18 @@ main {
   align-items: center;
   flex-direction: column;
 }
+
+#todoDisplay {
+  background-color: rgb(224, 224, 153);
+  padding: 0px;
+  list-style: lower-alpha inside;
+}
+
+#todoDisplay > * {
+  border-bottom: 2px outset black;
+  padding: 7px 0px;
+}
+
 
 /* FOOTER */
 footer {

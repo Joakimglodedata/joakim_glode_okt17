@@ -8,7 +8,7 @@ linjer
 // Kommentar for ein linje
 
 
-console.log("Hello")
+// console.log("Hello")
 
 
 // Lager ein variabel som lagrer at den henter eit element fra HTML med id-navn addTodo
@@ -16,18 +16,28 @@ const addTodo = document.getElementById("addTodo") // Lager ein variabel som lag
 console.log(addTodo)
 
 // Setter opp ein array som fylles med teksten på gjøremål, bruker dette for å hindre at man kan produsere duplikat opplistinger.
-const todoItemValues = []
-console.log(todoItemValues)
+let todoItemValueList = []
+// console.log(todoItemValueList)
 
-// Når knappen blir klikket blir siden ikkje lastet inn på nytt og den kjører funksjonen makeItem, med å lage det som ein separat funskjon kan man enkelt sette inn alternative måter å aktivere funksjonen.
-addTodo.addEventListener("click", function (event) {
+// Når knappen blir klikket blir siden ikkje lastet inn på nytt og den kjører funksjonen makeItem
+addTodo.addEventListener("click", () => {
   event.preventDefault()
   makeItem ()
+})
 
-// Gjør ein sjekk så man ikkje kan lage tomme elementer, .length > 0 gjør at det må være noe skrivd inn i input og .trim() tar vekk mellomrom så man ikkje kan lage element med kun mellomrom.
+addRandom.addEventListener("click", () => {
+  event.preventDefault()
+  const todoInput = document.getElementById("todoInput")
+  const prefix = ["Vaske", "Støvsuge", "Rydde", "Børste", "Lage", "Fikse", "Hente"]
+  const suffix = ["stuen", "kjørl", "mat", "kjeledyr", "inngangsdøren", "loftet"]
+  todoInput.value = 
+})
+
+// Med å lage makeItem som ein separat funsksjon kan man enkelt legge til fleire måter å aktivere den, gjør spesielt testing mye simplere siden eg kan kjøre funksjonen når eg åpner siden med å legge in makeItem ().
 function makeItem () {
   const todoInput = document.getElementById("todoInput")
-  if (todoInput.value.trim().length > 0 && todoItemValues.includes(todoInput.value) != true) {  
+  // Gjør ein sjekk så man ikkje kan lage tomme elementer, .length > 0 gjør at det må være noe skrivd inn i input og .trim() tar vekk mellomrom så man ikkje kan lage element med kun mellomrom.
+  if (todoInput.value.trim().length > 0 && todoItemValueList.includes(todoInput.value) != true) {  
   console.log("click")
   console.log(todoInput)
   const todoInputValue = todoInput.value
@@ -36,17 +46,18 @@ function makeItem () {
   const todoItem = document.createElement("li")
   console.log(todoItem)
   todoItem.textContent = todoInputValue
-  todoItemValues.push(todoInputValue)
-  console.log(todoItemValues)
+  todoItemValueList.push(todoInputValue)
+  console.log(todoItemValueList)
 
   const deleteTodo = document.createElement("button")
   deleteTodo.textContent = "X"
+  // Når knappen blir klikket tar den vekk todoItem elementet den blei produsert med, og redefinerer todoItemValueList uten todoInputValue som blei brukt for å lage det todoItem elementet 
   deleteTodo.addEventListener("click", function () {
       todoItem.remove()
-    todoItemValues = todoItemValues.filter(element => element != todoInputValue)
-
+    todoItemValueList = todoItemValueList.filter(element => element != todoInputValue)
   })
 
+  // Lager ein knapp som kan toggle ein klasse som stryker ut teksten på TodoItem
   const doneTodo = document.createElement("button")
   doneTodo.textContent = "gjort"
   doneTodo.addEventListener("click", function () {
@@ -61,7 +72,5 @@ function makeItem () {
   todoDisplay.appendChild(todoItem) 
   }
 }
-  
-
-})
+makeItem ()
 
